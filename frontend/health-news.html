@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes AI - Health News</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin:0; padding:0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #f4fafd; color: #1e2f3a; line-height: 1.5; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+        header { background: white; box-shadow: 0 4px 20px rgba(0,0,0,0.03); position: sticky; top:0; z-index:100; background-color: rgba(255,255,255,0.96); }
+        .navbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; padding: 18px 0; }
+        .logo-area { display: flex; align-items: center; gap: 12px; }
+        .logo-icon { font-size: 2rem; color: #0f8099; }
+        .logo-text { font-weight: 800; font-size: 1.6rem; background: linear-gradient(135deg, #0a4c5c, #1f8a9c); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .nav-links { display: flex; gap: 28px; flex-wrap: wrap; align-items: center; }
+        .nav-links a { text-decoration: none; font-weight: 600; color: #1e2f3a; transition: 0.2s; font-size: 1rem; }
+        .nav-links a:hover, .nav-links a.active { color: #0f8099; border-bottom: 2px solid #0f8099; padding-bottom: 4px; }
+        .btn-outline { background: transparent; border: 2px solid #0a4c5c; color: #0a4c5c; padding: 8px 22px; border-radius: 40px; font-weight: 600; text-decoration: none; }
+        .btn-outline:hover { background: #0a4c5c; color: white; }
+        .news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 32px; margin: 48px 0; }
+        .news-card { background: white; border-radius: 28px; padding: 24px; box-shadow: 0 8px 18px rgba(0,0,0,0.05); transition: 0.2s; display: flex; flex-direction: column; }
+        .news-card:hover { transform: translateY(-4px); box-shadow: 0 16px 28px rgba(0,0,0,0.08); }
+        .news-card h3 { color: #0a4c5c; margin-bottom: 12px; font-size: 1.5rem; }
+        .date { color: #6e8f9c; font-size: 0.85rem; margin-bottom: 12px; display: block; }
+        .read-more { margin-top: 20px; display: inline-block; background: white; border: 2px solid #0a4c5c; color: #0a4c5c; padding: 8px 20px; border-radius: 40px; text-decoration: none; font-weight: 600; transition: 0.2s; align-self: flex-start; }
+        .read-more:hover { background: #0a4c5c; color: white; }
+        .loading { text-align: center; padding: 50px; font-size: 1.2rem; color: #0a4c5c; }
+        .error { text-align: center; padding: 50px; color: #d9534f; background: #f9e6e6; border-radius: 28px; }
+        footer { background: #0a1e24; color: #bdd3db; padding: 40px 0 24px; margin-top: 60px; }
+        .footer-content { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px; margin-bottom: 32px; }
+        .footer-links a { color: #bdd3db; text-decoration: none; margin: 0 12px; }
+        .copyright { text-align: center; border-top: 1px solid #1f3e48; padding-top: 24px; font-size: 0.85rem; }
+        @media (max-width: 768px) { .navbar { flex-direction: column; gap: 16px; } .nav-links { justify-content: center; } }
+    </style>
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="navbar">
+            <div class="logo-area"><i class="fas fa-newspaper logo-icon"></i><div class="logo-text">Diabetes AI</div></div>
+            <div class="nav-links"><a href="index.html">Home</a><a href="health-news.html" class="active">Health News</a><a href="about.html">About</a><a href="contact.html">Contact</a>
+        </div>
+        </div>
+    </div>
+</header>
+<main class="container">
+    <h1 style="font-size: 2.4rem; margin: 40px 0 10px;">Latest Health News</h1>
+    <p style="color: #2c5563; margin-bottom: 20px;">Stay updated with the latest diabetes research and wellness tips</p>
+    
+    <!-- News cards will be inserted here by JavaScript -->
+    <div id="newsGrid" class="news-grid">
+        <div class="loading">Loading latest health news...</div>
+    </div>
+</main>
+<footer style="background-color: #0a1e24; color: #bdd3db; padding: 40px 0 20px; margin-top: 60px; font-family: 'Inter', sans-serif;">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 0 24px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px;">
+        <div style="flex: 1; min-width: 180px;">
+            <h4 style="color: #e2f0f5; margin-bottom: 16px; font-weight: 600;">Diabetes AI</h4>
+            <p style="font-size: 0.9rem; line-height: 1.6;">Innovative health solutions powered by AI. Helping you live a smarter, healthier life.</p>
+        </div>
+        <div style="flex: 1; min-width: 180px;">
+            <h4 style="color: #e2f0f5; margin-bottom: 16px; font-weight: 600;">Information</h4>
+            <ul style="list-style: none; padding: 0; margin: 0;">
+                <li style="margin-bottom: 8px;"><a href="medical-disclaimer.html" style="color: #bdd3db; text-decoration: none;">Medical Disclaimer</a></li>
+                <li style="margin-bottom: 8px;"><a href="privacy.html" style="color: #bdd3db; text-decoration: none;">Privacy Policy</a></li>
+                <li style="margin-bottom: 8px;"><a href="https://www.who.int/india/health-topics" target="_blank" style="color: #bdd3db; text-decoration: none;">WHO Guidelines</a></li>
+            </ul>
+        </div>
+        <div style="flex: 1; min-width: 180px;">
+            <h4 style="color: #e2f0f5; margin-bottom: 16px; font-weight: 600;">Contact Us</h4>
+            <p style="font-size: 0.9rem; margin-bottom: 8px;">Email: <a href="mailto:oss13161316@gmail.com" style="color: #bdd3db; text-decoration: none;">oss13161316@gmail.com</a></p>
+            <p style="font-size: 0.9rem;">Phone: <a href="tel:+919128749516" style="color: #bdd3db; text-decoration: none;">+91 912 874 9516</a></p>
+        </div>
+    </div>
+    <div style="text-align: center; border-top: 1px solid #1f3e48; padding-top: 24px; margin-top: 32px; font-size: 0.85rem; max-width: 1280px; margin-left: auto; margin-right: auto; padding-left: 24px; padding-right: 24px;">
+        &copy; 2026 Diabetes AI Portal | All Rights Reserved
+    </div>
+</footer>
+
+<script>
+    // =========================================================================
+    // 📰 स्टैटिक विश्वसनीय हेल्थ न्यूज़ और टिप्स (No API Key Required)
+    // =========================================================================
+    const archivedNews = [
+        {
+            title: "Understanding Type 2 Diabetes Prevention",
+            description: "Adopting a balanced diet rich in fiber and engaging in 30 minutes of daily physical activity can reduce the risk of type 2 diabetes by up to 40%.",
+            url: "https://www.who.int/news-room/fact-sheets/detail/diabetes",
+            urlToImage: "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=400&h=200&fit=crop"
+        },
+        {
+            title: "The Role of Continuous Glucose Monitoring",
+            description: "Tracking your blood sugar levels regularly helps identify glycemic patterns, making it easier to manage sudden spikes after meals.",
+            url: "https://www.diabetes.org/",
+            urlToImage: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400&h=200&fit=crop"
+        },
+        {
+            title: "Hydration and Blood Sugar Levels",
+            description: "Drinking an adequate amount of water helps the kidneys flush out excess glucose through urine, preventing severe dehydration.",
+            url: "https://www.cdc.gov/diabetes/index.html",
+            urlToImage: "https://images.unsplash.com/photo-1548839130-3bf6027b7aae?w=400&h=200&fit=crop"
+        },
+        {
+            title: "Superfoods for Diabetes Management",
+            description: "Incorporating complex carbohydrates like whole oats, leafy vegetables, berries, and legumes ensures stable, long-term energy release.",
+            url: "https://www.nutrition.gov",
+            urlToImage: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=200&fit=crop"
+        }
+    ];
+
+    function renderArchivedNews() {
+        const newsGrid = document.getElementById('newsGrid');
+        if (!newsGrid) return;
+
+        newsGrid.innerHTML = ''; // ग्रिड को क्लियर करें
+        
+        archivedNews.forEach(article => {
+            const card = document.createElement('div');
+            card.className = 'news-card';
+            card.innerHTML = `
+                <img src="${article.urlToImage}" alt="News Image">
+                <div class="news-content">
+                    <h3>${escapeHtml(article.title)}</h3>
+                    <p>${escapeHtml(article.description)}</p>
+                    <a href="${article.url}" target="_blank">Read Full Guide <i class="fas fa-arrow-right"></i></a>
+                </div>
+            `;
+            newsGrid.appendChild(card);
+        });
+    }
+
+    function escapeHtml(text) {
+        if (!text) return '';
+        return text
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;');
+    }
+
+    // पेज लोड होते ही न्यूज़ रेंडर करें
+    renderArchivedNews();
+
+
+    function updateAuthUI() {
+        const authSection = document.getElementById('authSection');
+        if (authSection) {
+            authSection.innerHTML = `<span style="font-weight:600; color:#0a4c5c;">AI Diagnostic Active</span>`;
+        }
+    }
+    updateAuthUI();
+</script>
+</body>
+</html>

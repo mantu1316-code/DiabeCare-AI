@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Diabetes AI - Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f4fafd;
+            color: #1e2f3a;
+            line-height: 1.5;
+        }
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        /* Header (same as before) */
+        header {
+            background: white;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(2px);
+            background-color: rgba(255,255,255,0.96);
+        }
+        .navbar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 0;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .logo-icon {
+            font-size: 2rem;
+            color: #0f8099;
+        }
+        .logo-text {
+            font-weight: 800;
+            font-size: 1.6rem;
+            background: linear-gradient(135deg, #0a4c5c, #1f8a9c);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 600;
+            color: #1e2f3a;
+            transition: 0.2s;
+            font-size: 1rem;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            color: #0f8099;
+            border-bottom: 2px solid #0f8099;
+            padding-bottom: 4px;
+        }
+        .btn-primary {
+            background: #0a4c5c;
+            color: white;
+            padding: 12px 32px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: 0.2s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+        .btn-primary:hover {
+            background: #146b7e;
+            transform: translateY(-2px);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #0a4c5c;
+            color: #0a4c5c;
+            padding: 8px 22px;
+            border-radius: 40px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+        .btn-outline:hover {
+            background: #0a4c5c;
+            color: white;
+        }
+        /* Carousel (existing) */
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            margin: 28px 0 32px;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 15px 25px rgba(0,0,0,0.1);
+        }
+        .carousel-slide {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+            transition: 0.3s;
+        }
+        /* Diabetes check card (existing) */
+        .diabetes-check-card {
+            display: flex;
+            flex-wrap: wrap;
+            background: white;
+            border-radius: 32px;
+            overflow: hidden;
+            margin: 40px 0 48px;
+            box-shadow: 0 12px 28px rgba(0,0,0,0.07);
+            align-items: center;
+        }
+        .check-img {
+            flex: 1;
+            min-width: 240px;
+        }
+        .check-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .check-content {
+            flex: 1;
+            padding: 40px 32px;
+            text-align: center;
+        }
+        .check-content h2 {
+            font-size: 2rem;
+            margin-bottom: 16px;
+            color: #0a4c5c;
+            letter-spacing: -0.3px;
+        }
+        /* New sections common style */
+        .section-title {
+            font-size: 1.8rem;
+            color: #0a4c5c;
+            margin: 40px 0 20px;
+            text-align: center;
+            position: relative;
+        }
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: #0f8099;
+            margin: 12px auto 0;
+            border-radius: 4px;
+        }
+        .grid-2col {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            margin-bottom: 40px;
+        }
+        .info-card {
+            background: white;
+            border-radius: 28px;
+            padding: 24px;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.05);
+            transition: 0.2s;
+        }
+        .info-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 28px rgba(0,0,0,0.08);
+        }
+        .info-card h3 {
+            color: #0a4c5c;
+            margin-bottom: 16px;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        /* Tip generator */
+        .tip-box {
+            background: #e6f4f0;
+            padding: 20px;
+            border-radius: 24px;
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-top: 16px;
+        }
+        /* Quick risk preview sliders */
+        .slider-group {
+            margin-bottom: 20px;
+        }
+        .slider-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        input[type="range"] {
+            width: 100%;
+            margin: 8px 0;
+        }
+        .risk-badge {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 40px;
+            font-weight: 600;
+            margin-top: 12px;
+        }
+        .risk-low { background: #d4edda; color: #155724; }
+        .risk-medium { background: #fff3cd; color: #856404; }
+        .risk-high { background: #f8d7da; color: #721c24; }
+        /* Step counter */
+        .step-display {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #0a4c5c;
+            margin: 12px 0;
+        }
+        .step-input {
+            display: flex;
+            gap: 10px;
+            margin: 16px 0;
+        }
+        .step-input input {
+            flex: 1;
+            padding: 10px;
+            border-radius: 40px;
+            border: 1px solid #cbd5e1;
+        }
+        /* Health bites video container */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            border-radius: 24px;
+            overflow: hidden;
+            background: #000;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        /* Did you know carousel */
+        .fact-carousel {
+            background: #f0f7fa;
+            border-radius: 28px;
+            padding: 32px 24px;
+            text-align: center;
+            position: relative;
+        }
+        .fact-text {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin: 16px 0;
+            min-height: 80px;
+        }
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        .dot {
+            width: 10px;
+            height: 10px;
+            background: #bdd4dc;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .dot.active {
+            background: #0a4c5c;
+            width: 24px;
+            border-radius: 12px;
+        }
+        /* recipe and extra */
+        .recipe-img {
+            width: 100%;
+            border-radius: 20px;
+            margin-bottom: 16px;
+            height: 160px;
+            object-fit: cover;
+        }
+        footer {
+            background: #0a1e24;
+            color: #bdd3db;
+            padding: 40px 0 20px;
+            margin-top: 60px;
+        }
+        @media (max-width: 768px) {
+            .navbar { flex-direction: column; gap: 16px; }
+            .nav-links { justify-content: center; gap: 18px; }
+            .carousel-slide { height: 220px; }
+            .check-content h2 { font-size: 1.6rem; }
+            .section-title { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="navbar">
+            <div class="logo-area">
+                <i class="fas fa-microchip logo-icon"></i>
+                <div class="logo-text">Diabetes AI</div>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="active">Home</a>
+                <a href="health-news.html">Health News</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main>
+    <div class="container">
+        <!-- Auto-scroll carousel with local images -->
+        <div class="carousel-container">
+            <img id="carouselImg" class="carousel-slide" src="istockphoto-2210697839-1024x1024.jpg" alt="Diabetes care">
+        </div>
+
+        <!-- Existing diabetes check card (image stays) -->
+        <div class="diabetes-check-card">
+            <div class="check-img">
+                <img src="forcheckbox.jpg" alt="Glucose test">
+            </div>
+            <div class="check-content">
+                <h2>Diabetes Risk Analysis</h2>
+                <p>Check your risk level with our evidence-based screening tool. Quick, private and informative.</p>
+                <a href="diabetes-check.html" class="btn-primary">Start Diabetes Check →</a>
+            </div>
+        </div>
+
+        <!-- ========== NEW INNOVATIVE SECTIONS (6 features) ========== -->
+
+        <!-- 1. Random Tip Generator + 2. Quick Risk Preview (combined in two columns) -->
+        <div class="grid-2col">
+            <!-- Left: Tip Generator -->
+            <div class="info-card">
+                <h3><i class="fas fa-lightbulb"></i> Daily Wellness Tip</h3>
+                <div id="tipBox" class="tip-box">Loading tip...</div>
+            </div>
+            <!-- Right: Quick Risk Preview (sliders) -->
+            <div class="info-card">
+                <h3><i class="fas fa-chart-line"></i> Quick Risk Preview</h3>
+                <div class="slider-group">
+                    <label>Age: <span id="ageVal">45</span> yrs</label>
+                    <input type="range" id="riskAge" min="20" max="80" value="45" step="1">
+                </div>
+                <div class="slider-group">
+                    <label>Glucose (mg/dL): <span id="gluVal">120</span></label>
+                    <input type="range" id="riskGlucose" min="70" max="250" value="120" step="1">
+                </div>
+                <div class="slider-group">
+                    <label>BMI: <span id="bmiVal">25</span></label>
+                    <input type="range" id="riskBMI" min="15" max="40" value="25" step="0.5">
+                </div>
+                <div id="riskPreviewBadge" class="risk-badge risk-low">Low Risk</div>
+                <a href="diabetes-check.html" style="display:inline-block; margin-top:16px; font-size:0.9rem;">Full analysis →</a>
+            </div>
+        </div>
+
+        <!-- 3. Recipe of the Day + 4. Step Counter (two columns) -->
+        <div class="grid-2col">
+            <!-- Recipe of the Day -->
+            <div class="info-card">
+                <h3><i class="fas fa-utensils"></i> Diabetes-friendly Recipe</h3>
+                <img id="recipeImg" class="recipe-img" src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=300&h=160&fit=crop" alt="Healthy recipe">
+                <h4 id="recipeTitle">Oatmeal with Berries</h4>
+                <p id="recipeDesc">Rich in fiber, low glycemic index. Helps stabilize blood sugar.</p>
+                <button id="newRecipeBtn" class="btn-outline" style="margin-top:12px;">New Recipe</button>
+            </div>
+            <!-- Step Counter Tracker -->
+            <div class="info-card">
+                <h3><i class="fas fa-shoe-prints"></i> Daily Step Goal</h3>
+                <p>Target: 8000 steps per day</p>
+                <div class="step-display"><span id="stepCount">0</span> / 8000 steps</div>
+                <div class="step-input">
+                    <input type="number" id="stepInput" placeholder="Enter today's steps" value="0">
+                    <button id="updateStepsBtn" class="btn-primary" style="padding:8px 20px;">Update</button>
+                </div>
+                <button id="resetStepsBtn" class="btn-outline" style="margin-top:8px;">Reset</button>
+                <div id="stepMessage" style="margin-top:12px; font-size:0.9rem;"></div>
+            </div>
+        </div>
+
+        <!-- 5. Health Bites (video / short) -->
+        <div class="info-card" style="margin-bottom: 40px;">
+            <h3><i class="fas fa-play-circle"></i> Health Bites - Expert Shorts</h3>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/KIe4SI38Th8?rel=0" title="Diabetes check tip" allowfullscreen></iframe>
+            </div>
+            <p style="margin-top:12px;">Quick tip: How check blood sugar.</p>
+        </div>
+
+        <!-- 6. Did You Know? Carousel -->
+        <div class="info-card">
+            <h3><i class="fas fa-brain"></i> Did You Know?</h3>
+            <div class="fact-carousel">
+                <div id="factText" class="fact-text">Loading facts...</div>
+                <div class="carousel-dots" id="factDots"></div>
+                <button id="prevFact" class="btn-outline" style="margin:16px 5px 0;">Previous</button>
+                <button id="nextFact" class="btn-outline" style="margin:16px 5px 0;">Next</button>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin: 30px 0 20px;">
+            <h3 style="color:#0a4c5c;">Smart monitoring for a healthier tomorrow</h3>
+            <p>Stay informed, stay safe — AI-powered insights at your fingertips.</p>
+        </div>
+    </div>
+</main>
+
+<!-- Footer (same as given, consistent) -->
+<footer style="background-color: #0a1e24; color: #bdd3db; padding: 40px 0 20px; margin-top: 60px; font-family: 'Inter', sans-serif;">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 0 24px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px;">
+        <div style="flex: 1; min-width: 180px;">
+            <h4 style="color: #e2f0f5; margin-bottom: 16px; font-weight: 600;">Diabetes AI</h4>
+            <p style="font-size: 0.9rem; line-height: 1.6;">Innovative health solutions powered by AI. Helping you live a smarter, healthier life.</p>
+        </div>
+        <div style="flex: 1; min-width: 180px;">
+            <h4 style="color: #e2f0f5; margin-bottom: 16px; font-weight: 600;">Information</h4>
+            <ul style="list-style: none; padding: 0; margin: 0;">
+                <li style="margin-bottom: 8px;"><a href="medical-disclaimer.html" style="color: #bdd3db; text-decoration: none;">Medical Disclaimer</a></li>
+                <li style="margin-bottom: 8px;"><a href="privacy.html" style="color: #bdd3db; text-decoration: none;">Privacy Policy</a></li>
+                <li style="margin-bottom: 8px;"><a href="https://www.who.int/india/health-topics" target="_blank" style="color: #bdd3db; text-decoration: none;">WHO Guidelines</a></li>
+            </ul>
+        </div>
+        <div style="flex: 1; min-width: 180px;">
+            <h4 style="color: #e2f0f5; margin-bottom: 16px; font-weight: 600;">Contact Us</h4>
+            <p style="font-size: 0.9rem; margin-bottom: 8px;">Email: <a href="mailto:oss13161316@gmail.com" style="color: #bdd3db; text-decoration: none;">oss13161316@gmail.com</a></p>
+            <p style="font-size: 0.9rem;">Phone: <a href="tel:+919128749516" style="color: #bdd3db; text-decoration: none;">+91 912 874 9516</a></p>
+        </div>
+    </div>
+    <div style="text-align: center; border-top: 1px solid #1f3e48; padding-top: 24px; margin-top: 32px; font-size: 0.85rem; max-width: 1280px; margin-left: auto; margin-right: auto; padding-left: 24px; padding-right: 24px;">
+        &copy; 2026 Diabetes AI Portal | All Rights Reserved
+    </div>
+</footer>
+
+<script>
+    // =========================================================================
+    // 🌐 लाइव बैकएंड API यूआरएल कॉन्फ़िगरेशन
+    // =========================================================================
+    // अगर आप लोकल कंप्यूटर पर चलाएंगे तो यह http://localhost:5000 पकड़ेगा, 
+    // और जब आप इसे Vercel पर लाइव कर देंगे तो नीचे दिए गए आपके Render वाले यूआरएल से कनेक्ट हो जाएगा!
+    const API_BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
+        ? 'http://localhost:5000' 
+        : 'https://YOUR-DIABETES-BACKEND.onrender.com'; // यहाँ लाइव होने के बाद अपना Render URL डाल देना
+
+    // =========================================================================
+    // -------- CAROUSEL (local images) -------------
+    // =========================================================================
+    const carouselImages = [
+        "istockphoto-2210697839-1024x1024.jpg",
+        "pexels-andres-ayrton-6551463.jpg",
+        "pexels-n-voitkevich-6942008.jpg",
+        "pexels-pavel-danilyuk-7653347.jpg"
+    ];
+    let imgIdx = 0;
+    const imgEl = document.getElementById('carouselImg');
+    if(imgEl) {
+        setInterval(() => {
+            imgIdx = (imgIdx + 1) % carouselImages.length;
+            imgEl.src = carouselImages[imgIdx];
+        }, 2000);
+    }
+
+    // =========================================================================
+    // -------- 1. RANDOM TIP GENERATOR -------------
+    // =========================================================================
+    const tips = [
+        "Drink a glass of water before each meal to help control blood sugar.",
+        "Walking for 15 minutes after dinner can lower glucose levels.",
+        "Replace sugary drinks with unsweetened green tea or water.",
+        "Include more fiber like beans, oats, and vegetables in your diet.",
+        "Monitor your blood sugar regularly to understand your body's patterns.",
+        "Stress increases blood sugar — try deep breathing or meditation."
+    ];
+    function updateRandomTip() {
+        const randomIndex = Math.floor(Math.random() * tips.length);
+        const tipBoxEl = document.getElementById('tipBox');
+        if (tipBoxEl) tipBoxEl.innerText = tips[randomIndex];
+    }
+    setInterval(updateRandomTip, 10000); // change every 10 sec
+    updateRandomTip();
+
+    // =========================================================================
+    // -------- 2. QUICK RISK PREVIEW (sliders)--------
+    // =========================================================================
+    const ageSlider = document.getElementById('riskAge');
+    const glucoseSlider = document.getElementById('riskGlucose');
+    const bmiSlider = document.getElementById('riskBMI');
+    const ageVal = document.getElementById('ageVal');
+    const gluVal = document.getElementById('gluVal');
+    const bmiVal = document.getElementById('bmiVal');
+    const riskBadge = document.getElementById('riskPreviewBadge');
+
+    function updateRiskPreview() {
+        if (!ageSlider || !glucoseSlider || !bmiSlider) return;
+        
+        let age = parseInt(ageSlider.value);
+        let glucose = parseInt(glucoseSlider.value);
+        let bmi = parseFloat(bmiSlider.value);
+        
+        if (ageVal) ageVal.innerText = age;
+        if (gluVal) gluVal.innerText = glucose;
+        if (bmiVal) bmiVal.innerText = bmi;
+        
+        let riskScore = 0;
+        if (glucose >= 126) riskScore += 3;
+        else if (glucose >= 100) riskScore += 2;
+        
+        if (age >= 45 && age <= 64) riskScore += 1;
+        else if (age >= 65) riskScore += 2;
+        
+        if (bmi >= 25) riskScore += (bmi >= 30 ? 2 : 1);
+        
+        let riskText = "", riskClass = "";
+        if (riskScore >= 5) { riskText = "High Risk"; riskClass = "risk-high"; }
+        else if (riskScore >= 3) { riskText = "Medium Risk"; riskClass = "risk-medium"; }
+        else { riskText = "Low Risk"; riskClass = "risk-low"; }
+        
+        if (riskBadge) {
+            riskBadge.innerText = riskText;
+            riskBadge.className = `risk-badge ${riskClass}`;
+        }
+    }
+    
+    if (ageSlider) ageSlider.addEventListener('input', updateRiskPreview);
+    if (glucoseSlider) glucoseSlider.addEventListener('input', updateRiskPreview);
+    if (bmiSlider) bmiSlider.addEventListener('input', updateRiskPreview);
+    updateRiskPreview();
+
+    // =========================================================================
+    // -------- 3. RECIPE OF THE DAY (with rotation) --------
+    // =========================================================================
+    const recipes = [
+        { title: "Oatmeal with Berries", desc: "High fiber, low GI. Great for steady glucose.", img: "https://images.unsplash.com/photo-1517673132405-a56a62b18caf?w=300&h=160&fit=crop" },
+        { title: "Grilled Chicken Salad", desc: "Lean protein + leafy greens = stable sugar.", img: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=300&h=160&fit=crop" },
+        { title: "Quinoa & Veggie Bowl", desc: "Complex carbs and fiber rich.", img: "https://images.unsplash.com/photo-1505576391880-b3f9d713a41c?w=300&h=160&fit=crop" },
+        { title: "Greek Yogurt Parfait", desc: "Protein packed, no added sugar.", img: "https://images.unsplash.com/photo-1488477181946-6428a0291779?w=300&h=160&fit=crop" }
+    ];
+    let recipeIndex = 0;
+    function updateRecipe() {
+        const r = recipes[recipeIndex];
+        const rTitle = document.getElementById('recipeTitle');
+        const rDesc = document.getElementById('recipeDesc');
+        const rImg = document.getElementById('recipeImg');
+        
+        if (rTitle) rTitle.innerText = r.title;
+        if (rDesc) rDesc.innerText = r.desc;
+        if (rImg) rImg.src = r.img;
+    }
+    document.getElementById('newRecipeBtn')?.addEventListener('click', () => {
+        recipeIndex = (recipeIndex + 1) % recipes.length;
+        updateRecipe();
+    });
+    updateRecipe();
+
+    // =========================================================================
+    // -------- 4. STEP COUNTER (localStorage) --------
+    // =========================================================================
+    let stepCount = localStorage.getItem('diabetesSteps') ? parseInt(localStorage.getItem('diabetesSteps')) : 0;
+    const stepSpan = document.getElementById('stepCount');
+    const stepInput = document.getElementById('stepInput');
+    const stepMsg = document.getElementById('stepMessage');
+    
+    function updateStepDisplay() {
+        if (stepSpan) stepSpan.innerText = stepCount;
+        if (stepMsg) {
+            if (stepCount >= 8000) stepMsg.innerHTML = "Great! Target achieved. Keep moving!";
+            else if (stepCount > 5000) stepMsg.innerHTML = "Good progress. Just a few more steps to reach 8000.";
+            else stepMsg.innerHTML = "Keep walking! Every step counts toward better health.";
+        }
+        localStorage.setItem('diabetesSteps', stepCount);
+    }
+    
+    document.getElementById('updateStepsBtn')?.addEventListener('click', () => {
+        if (!stepInput) return;
+        let newSteps = parseInt(stepInput.value);
+        if (!isNaN(newSteps) && newSteps >= 0) stepCount = newSteps;
+        else stepCount = 0;
+        updateStepDisplay();
+        stepInput.value = stepCount;
+    });
+    
+    document.getElementById('resetStepsBtn')?.addEventListener('click', () => {
+        stepCount = 0;
+        updateStepDisplay();
+        if (stepInput) stepInput.value = 0;
+    });
+    updateStepDisplay();
+
+    // =========================================================================
+    // -------- 6. Did you know? carousel (facts) --------
+    // =========================================================================
+    const facts = [
+        "Diabetes is the 7th leading cause of death worldwide.",
+        "Regular exercise can reduce insulin resistance.",
+        "Type 2 diabetes accounts for 90-95% of all diabetes cases.",
+        "Monitoring HbA1c every 3 months helps track long-term control.",
+        "Losing just 5-7% body weight can prevent diabetes in high-risk individuals."
+    ];
+    let factIdx = 0;
+    const factText = document.getElementById('factText');
+    const factDots = document.getElementById('factDots');
+    
+    function updateFactCarousel() {
+        if (factText) factText.innerText = facts[factIdx];
+        if (!factDots) return;
+        
+        // update dots
+        let dotsHtml = '';
+        for(let i=0; i<facts.length; i++) {
+            dotsHtml += `<div class="dot ${i===factIdx ? 'active' : ''}" data-index="${i}"></div>`;
+        }
+        factDots.innerHTML = dotsHtml;
+        
+        // attach click events to dots
+        document.querySelectorAll('.dot').forEach(dot => {
+            dot.addEventListener('click', (e) => {
+                const idx = parseInt(e.target.getAttribute('data-index'));
+                if(!isNaN(idx)) {
+                    factIdx = idx;
+                    updateFactCarousel();
+                }
+            });
+        });
+    }
+    
+    document.getElementById('prevFact')?.addEventListener('click', () => {
+        factIdx = (factIdx - 1 + facts.length) % facts.length;
+        updateFactCarousel();
+    });
+    document.getElementById('nextFact')?.addEventListener('click', () => {
+        factIdx = (factIdx + 1) % facts.length;
+        updateFactCarousel();
+    });
+    updateFactCarousel();
+
+    // Automatic rotation for Did You Know? carousel every 7 seconds
+    setInterval(() => {
+        factIdx = (factIdx + 1) % facts.length;
+        updateFactCarousel();
+    }, 7000);
+
+
+    function updateAuthUI() {
+        const authSection = document.getElementById('authSection');
+        if (!authSection) return;
+        
+        const token = localStorage.getItem('diabetes_token');
+        const userStr = localStorage.getItem('diabetes_user');
+        
+        if (token && userStr) {
+        
+            const user = JSON.parse(userStr);
+            authSection.innerHTML = `
+                <span style="font-weight:500; color: #1e2f3a; margin-right: 15px;">Welcome, ${user.name}</span>
+                <a href="#" id="logoutBtn" style="background:#0a4c5c; color:white; padding:6px 16px; border-radius:40px; text-decoration:none; font-size:0.9rem; font-weight:500; transition:0.2s;">Logout</a>
+            `;
+            
+            document.getElementById('logoutBtn')?.addEventListener('click', (e) => {
+                e.preventDefault();
+                localStorage.removeItem('diabetes_token');
+                localStorage.removeItem('diabetes_user');
+                window.location.reload();
+            });
+        } else {
+           
+            authSection.innerHTML = `
+                <a href="login.html" style="background:#0a4c5c; color:white; padding:8px 20px; border-radius:40px; text-decoration:none; font-size:0.9rem; font-weight:500;">Login</a>
+                <a href="signup.html" class="btn-outline" style="margin-left:8px; padding:8px 20px; border:1px solid #0a4c5c; border-radius:40px; text-decoration:none; color:#0a4c5c; font-size:0.9rem; font-weight:500;">Sign Up</a>
+            `;
+        }
+    }
+
+    updateAuthUI();
+</script>
+</body>
+</html>

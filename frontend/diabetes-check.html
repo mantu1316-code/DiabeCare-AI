@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes AI - Advanced Diabetes Check</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin:0; padding:0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f4fafd;
+            color: #1e2f3a;
+            line-height: 1.5;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        /* Header styles (same as before) */
+        header {
+            background: white;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: rgba(255,255,255,0.96);
+        }
+        .navbar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 0;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .logo-icon {
+            font-size: 2rem;
+            color: #0f8099;
+        }
+        .logo-text {
+            font-weight: 800;
+            font-size: 1.6rem;
+            background: linear-gradient(135deg, #0a4c5c, #1f8a9c);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 600;
+            color: #1e2f3a;
+            transition: 0.2s;
+            font-size: 1rem;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            color: #0f8099;
+            border-bottom: 2px solid #0f8099;
+            padding-bottom: 4px;
+        }
+        /* Iframe box */
+        .streamlit-embed {
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+            margin: 40px 0;
+            overflow: hidden;
+            border: 1px solid #e0f0f5;
+        }
+        .streamlit-embed iframe {
+            width: 100%;
+            height: 850px;
+            border: none;
+            display: block;
+        }
+        /* New Footer Styles (inline via style tag) */
+        .new-footer {
+            background-color: #0a1e24;
+            color: #bdd3db;
+            padding: 40px 0 20px;
+            margin-top: 60px;
+            font-family: 'Inter', sans-serif;
+        }
+        .footer-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 32px;
+        }
+        .footer-container > div {
+            flex: 1;
+            min-width: 180px;
+        }
+        .footer-container h4 {
+            color: #e2f0f5;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        .footer-container p, .footer-container li {
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        .footer-container a {
+            color: #bdd3db;
+            text-decoration: none;
+        }
+        .footer-container a:hover {
+            color: #5ccfe0;
+            text-decoration: underline;
+        }
+        .footer-container ul {
+            list-style: none;
+            padding: 0;
+        }
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid #1f3e48;
+            padding-top: 24px;
+            margin-top: 32px;
+            font-size: 0.85rem;
+            max-width: 1280px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 24px;
+            padding-right: 24px;
+        }
+        @media (max-width: 768px) {
+            .navbar { flex-direction: column; gap: 16px; }
+            .nav-links { justify-content: center; }
+            .footer-container { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="navbar">
+            <div class="logo-area">
+                <i class="fas fa-microchip logo-icon"></i>
+                <div class="logo-text">Diabetes AI</div>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="health-news.html">Health News</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+                <div id="authSection" style="display: flex; gap: 12px; align-items: center;"></div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main class="container">
+    <h1 style="font-size: 2rem; margin-top: 40px;">AI-Powered Diabetes Risk Analysis</h1>
+    <p style="margin-bottom: 10px;">Below is the interactive Streamlit dashboard. Fill your details and get instant results with gauge chart, feature importance, and bullet-point precautions.</p>
+    
+    <!-- Streamlit App embedded directly in a box (no button) -->
+    <div class="streamlit-embed">
+        <iframe src="http://localhost:8501" title="Diabetes AI Streamlit App"></iframe>
+    </div>
+    <p style="font-size: 0.85rem; color: #5f8c9a; margin-top: -20px; margin-bottom: 40px;">
+        The app runs on localhost:8501. Make sure to run <code>streamlit run streamlit_app.py</code> before viewing this page.
+    </p>
+</main>
+
+<!-- New Footer as requested -->
+<footer style="background-color: #0a1e24; color: #bdd3db; padding: 40px 0 20px; margin-top: 60px; font-family: 'Inter', sans-serif;">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 0 24px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px;">
+        <div style="flex: 1; min-width: 180px;">
+            <h4 style="color: #e2f0f5; margin-bottom: 16px; font-weight: 600;">Diabetes AI</h4>
+            <p style="font-size: 0.9rem; line-height: 1.6;">Innovative health solutions powered by AI. Helping you live a smarter, healthier life.</p>
+        </div>
+        <div style="flex: 1; min-width: 180px;">
+            <h4 style="color: #e2f0f5; margin-bottom: 16px; font-weight: 600;">Information</h4>
+            <ul style="list-style: none; padding: 0; margin: 0;">
+                <li style="margin-bottom: 8px;"><a href="medical-disclaimer.html" style="color: #bdd3db; text-decoration: none;">Medical Disclaimer</a></li>
+                <li style="margin-bottom: 8px;"><a href="privacy.html" style="color: #bdd3db; text-decoration: none;">Privacy Policy</a></li>
+                <li style="margin-bottom: 8px;"><a href="https://www.who.int/india/health-topics" target="_blank" style="color: #bdd3db; text-decoration: none;">WHO Guidelines</a></li>
+            </ul>
+        </div>
+        <div style="flex: 1; min-width: 180px;">
+            <h4 style="color: #e2f0f5; margin-bottom: 16px; font-weight: 600;">Contact Us</h4>
+            <p style="font-size: 0.9rem; margin-bottom: 8px;">Email: <a href="mailto:oss13161316@gmail.com" style="color: #bdd3db; text-decoration: none;">oss13161316@gmail.com</a></p>
+            <p style="font-size: 0.9rem;">Phone: <a href="tel:+919128749516" style="color: #bdd3db; text-decoration: none;">+91 912 874 9516</a></p>
+        </div>
+    </div>
+    <div style="text-align: center; border-top: 1px solid #1f3e48; padding-top: 24px; margin-top: 32px; font-size: 0.85rem; max-width: 1280px; margin-left: auto; margin-right: auto; padding-left: 24px; padding-right: 24px;">
+        &copy; 2026 Diabetes AI Portal | All Rights Reserved
+    </div>
+</footer>
+<script>
+    // यहाँ अपना Streamlit का लाइव यूआरएल डाल देना होस्ट करने के बाद
+    const STREAMLIT_APP_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+        ? 'http://localhost:8501' 
+        : 'https://YOUR-STREAMLIT-APP.streamlit.app';
+
+    function updateAuthUI() {
+        const authSection = document.getElementById('authSection');
+        const token = localStorage.getItem('diabetes_token');
+        const userStr = localStorage.getItem('diabetes_user');
+        if (token && userStr) {
+            const user = JSON.parse(userStr);
+            authSection.innerHTML = `
+                <span style="font-weight:500; margin-right:15px;">Welcome, ${user.name}</span>
+                <a href="#" id="logoutBtn" style="background:#0a4c5c; color:white; padding:6px 16px; border-radius:40px; text-decoration:none;">Logout</a>
+            `;
+            document.getElementById('logoutBtn')?.addEventListener('click', (e) => {
+                e.preventDefault();
+                localStorage.removeItem('diabetes_token');
+                localStorage.removeItem('diabetes_user');
+                window.location.reload();
+            });
+        } else {
+            authSection.innerHTML = `
+                <a href="login.html" style=\"background:#0a4c5c; color:white; padding:8px 20px; border-radius:40px; text-decoration:none;\">Login</a>
+            `;
+        }
+    }
+    updateAuthUI();
+
+    // Start Check button click logic
+    document.getElementById('startCheckBtn')?.addEventListener('click', (e) => {
+        const token = localStorage.getItem('diabetes_token');
+        if (!token) {
+            e.preventDefault();
+            alert("Security Notice: Please login to your account first to access the AI Diagnostic Model.");
+            window.location.href = 'login.html';
+        } else {
+            // लॉग इन होने पर सीधे Streamlit प्रेडिक्शन टूल खुल जाएगा
+            window.location.href = STREAMLIT_APP_URL;
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes AI - About Team</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin:0; padding:0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #f4fafd; color: #1e2f3a; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+        header { background: white; box-shadow: 0 4px 20px rgba(0,0,0,0.03); position: sticky; top:0; z-index:100; background-color: rgba(255,255,255,0.96); }
+        .navbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; padding: 18px 0; }
+        .logo-area { display: flex; align-items: center; gap: 12px; }
+        .logo-icon { font-size: 2rem; color: #0f8099; }
+        .logo-text { font-weight: 800; font-size: 1.6rem; background: linear-gradient(135deg, #0a4c5c, #1f8a9c); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .nav-links { display: flex; gap: 28px; flex-wrap: wrap; align-items: center; }
+        .nav-links a { text-decoration: none; font-weight: 600; color: #1e2f3a; transition: 0.2s; font-size: 1rem; }
+        .nav-links a:hover, .nav-links a.active { color: #0f8099; border-bottom: 2px solid #0f8099; padding-bottom: 4px; }
+        .btn-outline { background: transparent; border: 2px solid #0a4c5c; color: #0a4c5c; padding: 8px 22px; border-radius: 40px; font-weight: 600; text-decoration: none; }
+        .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; margin: 48px 0; }
+        .team-card { background: white; border-radius: 28px; padding: 24px; text-align: center; box-shadow: 0 8px 20px rgba(0,0,0,0.05); transition: 0.2s; }
+        .team-card:hover { transform: translateY(-5px); }
+        .team-card h3 { color: #0a4c5c; margin-bottom: 8px; font-size: 1.5rem; }
+        .roll { font-weight: 500; color: #1f8a9c; margin-bottom: 8px; }
+        /* New full-width image section */
+        .hero-image {
+            width: 80%;
+            height: 70%;
+            margin: 2% 0% 0% 10%;
+            overflow: hidden;
+            line-height: 0;
+        }
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            display: block;
+        }
+        footer { background: #0a1e24; color: #bdd3db; padding: 40px 0 24px; margin-top: 60px; }
+        .footer-content { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px; margin-bottom: 32px; }
+        .footer-links a { color: #bdd3db; text-decoration: none; margin: 0 12px; }
+        .copyright { text-align: center; border-top: 1px solid #1f3e48; padding-top: 24px; }
+        @media (max-width: 768px) { .navbar { flex-direction: column; } .nav-links { justify-content: center; } }
+    </style>
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="navbar">
+            <div class="logo-area"><i class="fas fa-stethoscope logo-icon"></i><div class="logo-text">Diabetes AI</div></div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="health-news.html">Health News</a>
+                <a href="about.html" class="active">About</a>
+                <a href="contact.html">Contact</a>
+                <div id="authSection" style="display: flex; gap: 12px; align-items: center;"></div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Full-width image before "Our Mission" -->
+<div class="hero-image">
+    <img src="my_bg.jpeg" alt="Diabetes AI background">
+</div>
+
+<main class="container">
+    <h1 style="font-size: 2.4rem; margin-top: 48px;">Our Mission</h1>
+    <p style="color: #2c5563; margin-bottom: 12px;">
+        DiabeCare AI is dedicated to transforming preventive healthcare through artificial intelligence. We focus on diabetes risk prediction, personalized wellness insights, and real-time diagnostics. Our mission is not only to provide data but to deliver actionable intelligence that helps individuals make healthier choices every day. By combining modern UI design with advanced machine learning, we aim to create health portals that are both user-friendly and impactful.
+        <br><br>
+        What sets us apart is our commitment to <strong>innovation and accessibility</strong>. We believe healthcare technology should be portable, responsive, and tailored to diverse communities. Our platform integrates WHO guidelines and emphasizes ethical AI practices to ensure trust and transparency.
+    </p>
+
+    <div class="team-grid">
+        <div class="team-card"><h3>Mantu Kumar</h3><div class="roll">Roll: 23BTH011</div><p>Lead Developer & Diabetes AI Architect</p></div>
+        <div class="team-card"><h3>Golu Kumar</h3><div class="roll">Roll: 23BTH020</div><p>Frontend & UI Designer</p></div>
+        <div class="team-card"><h3>Ankush Kumar</h3><div class="roll">Roll: 23BTH012</div><p>Backend & Risk Algorithm</p></div>
+        <div class="team-card"><h3>Tanmay Anand</h3><div class="roll">Roll: 23BTH006</div><p>Health Data Analyst</p></div>
+        <div class="team-card"><h3>Pankaj Yadav</h3><div class="roll">Roll: 23BTH039</div><p>Full Stack & QA</p></div>
+        <div class="team-card"><h3>Manish Kumar</h3><div class="roll">Roll: 23BTH009</div><p>Frontend & UI Designer</p></div>
+    </div>
+
+    <div style="background: #e3f2f5; border-radius: 32px; padding: 32px; margin: 32px 0; text-align: center;">
+        <i class="fas fa-university" style="font-size: 2rem; color: #0a4c5c;"></i>
+        <p style="margin-top: 12px;">We are Pursuing 6th Semester at <strong>Gopal Narayan Singh University</strong> — committed to accessible healthcare technology.</p>
+    </div>
+</main>
+
+<footer style="background-color: #0a1e24; color: #bdd3db; padding: 40px 0 20px; margin-top: 60px; font-family: 'Inter', sans-serif;">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 0 24px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px;">
+        <div style="flex: 1; min-width: 180px;">
+            <h4 style="color: #e2f0f5; margin-bottom: 16px; font-weight: 600;">Diabetes AI</h4>
+            <p style="font-size: 0.9rem; line-height: 1.6;">Innovative health solutions powered by AI. Helping you live a smarter, healthier life.</p>
+        </div>
+        <div style="flex: 1; min-width: 180px;">
+            <h4 style="color: #e2f0f5; margin-bottom: 16px; font-weight: 600;">Information</h4>
+            <ul style="list-style: none; padding: 0; margin: 0;">
+                <li style="margin-bottom: 8px;"><a href="medical-disclaimer.html" style="color: #bdd3db; text-decoration: none;">Medical Disclaimer</a></li>
+                <li style="margin-bottom: 8px;"><a href="privacy.html" style="color: #bdd3db; text-decoration: none;">Privacy Policy</a></li>
+                <li style="margin-bottom: 8px;"><a href="https://www.who.int/india/health-topics" target="_blank" style="color: #bdd3db; text-decoration: none;">WHO Guidelines</a></li>
+            </ul>
+        </div>
+        <div style="flex: 1; min-width: 180px;">
+            <h4 style="color: #e2f0f5; margin-bottom: 16px; font-weight: 600;">Contact Us</h4>
+            <p style="font-size: 0.9rem; margin-bottom: 8px;">Email: <a href="mailto:oss13161316@gmail.com" style="color: #bdd3db; text-decoration: none;">oss13161316@gmail.com</a></p>
+            <p style="font-size: 0.9rem;">Phone: <a href="tel:+919128749516" style="color: #bdd3db; text-decoration: none;">+91 912 874 9516</a></p>
+        </div>
+    </div>
+    <div style="text-align: center; border-top: 1px solid #1f3e48; padding-top: 24px; margin-top: 32px; font-size: 0.85rem; max-width: 1280px; margin-left: auto; margin-right: auto; padding-left: 24px; padding-right: 24px;">
+        &copy; 2026 Diabetes AI Portal | All Rights Reserved
+    </div>
+</footer>
+<script>
+    function updateAuthUI() {
+        const authSection = document.getElementById('authSection');
+        const token = localStorage.getItem('diabetes_token');
+        const userStr = localStorage.getItem('diabetes_user');
+        if (token && userStr) {
+            const user = JSON.parse(userStr);
+            authSection.innerHTML = `
+                <span style="font-weight:500; margin-right:15px;">Welcome, ${user.name}</span>
+                <a href="#" id="logoutBtn" style="background:#0a4c5c; color:white; padding:6px 16px; border-radius:40px; text-decoration:none;">Logout</a>
+            `;
+            document.getElementById('logoutBtn')?.addEventListener('click', (e) => {
+                e.preventDefault();
+                localStorage.removeItem('diabetes_token');
+                localStorage.removeItem('diabetes_user');
+                window.location.reload();
+            });
+        }
+    }
+    updateAuthUI();
+</script>
+</body>
+</html>
