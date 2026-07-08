@@ -40,5 +40,5 @@ Follow these engineering protocols to set up and run the execution stack inside 
 ### 1. Source Synchronization
 Clone the active tracking branch from the remote server:
 ```bash
-git clone [https://github.com/your-username/diabecare-ai.git](https://github.com/your-username/diabecare-ai.git)
-cd diabecare-ai
+git clone [https://github.com/mantu1316-code/DiabeCare-AI.git](https://github.com/mantu1316-code/DiabeCare-AI.git)
+cd DiabeCare-AI
