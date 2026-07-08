@@ -81,9 +81,7 @@
 </footer>
 
 <script>
-    // =========================================================================
-    // 📰 स्टैटिक विश्वसनीय हेल्थ न्यूज़ और टिप्स (No API Key Required)
-    // =========================================================================
+
     const archivedNews = [
         {
             title: "Understanding Type 2 Diabetes Prevention",
@@ -115,7 +113,7 @@
         const newsGrid = document.getElementById('newsGrid');
         if (!newsGrid) return;
 
-        newsGrid.innerHTML = ''; // ग्रिड को क्लियर करें
+        newsGrid.innerHTML = '';
         
         archivedNews.forEach(article => {
             const card = document.createElement('div');
